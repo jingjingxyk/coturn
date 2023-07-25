@@ -3236,7 +3236,7 @@ static int THREAD_setup(void);
 // more info https://github.com/openssl/openssl/issues/14574
 /*
     #ifndef OPENSSL_THREADS
-    # define OPENSSL_THREADS
+    #define OPENSSL_THREADS
     #endif
  */
 
@@ -3301,6 +3301,8 @@ int THREAD_cleanup(void);
 int THREAD_cleanup(void) { return 1; }
 #endif /* OPENSSL_VERSION_NUMBER < OPENSSL_VERSION_1_1_0 */
 //#endif /* defined(OPENSSL_THREADS) */
+
+
 
 static void adjust_key_file_name(char *fn, const char *file_title, int critical) {
   char *full_path_to_file = NULL;
