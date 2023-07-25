@@ -3229,7 +3229,7 @@ int main(int argc, char **argv) {
   return 0;
 }
 
-static int THREAD_setup(void) {}
+static int THREAD_setup(void);
 
 ////////// OpenSSL locking ////////////////////////////////////////
 
