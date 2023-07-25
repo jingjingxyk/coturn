@@ -3250,13 +3250,14 @@ void coturn_locking_function(int mode, int n, const char *file, int line) {
   }
 }
 
+static int THREAD_setup(void) {}
+
 void coturn_id_function(CRYPTO_THREADID *ctid);
 void coturn_id_function(CRYPTO_THREADID *ctid) {
   UNUSED_ARG(ctid);
   CRYPTO_THREADID_set_numeric(ctid, (unsigned long)pthread_self());
 }
 
-static int THREAD_setup(void) {};
 static int THREAD_setup(void) {
   int i;
   for (i = 0; i < CRYPTO_num_locks(); i++) {
