@@ -3234,6 +3234,12 @@ static int THREAD_setup(void);
 ////////// OpenSSL locking ////////////////////////////////////////
 
 // more info https://github.com/openssl/openssl/issues/14574
+/*
+    #ifndef OPENSSL_THREADS
+    # define OPENSSL_THREADS
+    #endif
+ */
+
 //#if defined(OPENSSL_THREADS)
 #if OPENSSL_VERSION_NUMBER < OPENSSL_VERSION_1_1_0
 
