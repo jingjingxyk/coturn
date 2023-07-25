@@ -3239,6 +3239,7 @@ static int THREAD_setup(void);
     #define OPENSSL_THREADS
     #endif
  */
+// 参考 https://github.com/coturn/coturn/commit/4ce784a8781ab086c150e2b9f5641b1a37fd9b31
 
 //#if defined(OPENSSL_THREADS)
 #if OPENSSL_VERSION_NUMBER < OPENSSL_VERSION_1_1_0
