@@ -34,11 +34,11 @@ jobs:
           - s390x
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0  # for correct image labeling via `git describe --tags`
-      - uses: docker/setup-qemu-action@v2
-      - uses: docker/setup-buildx-action@v2
+      - uses: docker/setup-qemu-action@v3
+      - uses: docker/setup-buildx-action@v3
 
       - name: Detect correct Git ref for image build
         id: git
@@ -98,8 +98,8 @@ jobs:
           - s390x
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: docker/setup-qemu-action@v2
+      - uses: actions/checkout@v4
+      - uses: docker/setup-qemu-action@v3
       - run: make npm.install
         working-directory: docker/coturn/
 
@@ -150,7 +150,7 @@ jobs:
         dist: ["alpine", "debian"]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Parse Docker image name from Git repository name
         id: image
@@ -177,7 +177,7 @@ jobs:
           path: docker/coturn/.cache/
 
       - name: Login to ${{ matrix.registry }} container registry
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           registry: ${{ matrix.registry }}
           username: ${{ (matrix.registry == 'docker.io'
@@ -260,7 +260,7 @@ jobs:
     needs: ["push"]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Parse semver versions from Git tag
         id: semver
