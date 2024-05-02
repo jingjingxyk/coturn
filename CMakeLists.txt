@@ -54,6 +54,14 @@ if(DEFINED TURN_SERVER_BUILD_INFO)
     add_definitions(-DTURN_SERVER_BUILD_INFO=${TURN_SERVER_BUILD_INFO})
 endif()
 
+include(CMakeDependentOption)
+CMAKE_DEPENDENT_OPTION(BUILD_SHARED_LIBS "Build shared libraries" ON  "BUILD_STATIC_LIBS" OFF)
+CMAKE_DEPENDENT_OPTION(BUILD_STATIC_LIBS "Build static libraries" OFF "BUILD_SHARED_LIBS" ON)
+
+if(NOT BUILD_SHARED_LIBS AND NOT BUILD_STATIC_LIBS)
+    message(FATAL_ERROR "Both BUILD_SHARED_LIBS and BUILD_STATIC_LIBS have been disabled")
+endif()
+
 IF(MSVC)
     # This option is to enable the /MP switch for Visual Studio 2005 and above compilers
     OPTION(WIN32_USE_MP "Set to ON to build with the /MP option (Visual Studio 2005 and above)." ON)
