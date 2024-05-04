@@ -3343,7 +3343,8 @@ int main(int argc, char **argv) {
 int THREAD_cleanup(void);
 static int THREAD_setup(void);
 
-#if defined(OPENSSL_THREADS) && (OPENSSL_VERSION_NUMBER < OPENSSL_VERSION_1_1_0)
+#if defined(OPENSSL_THREADS)
+#if OPENSSL_VERSION_NUMBER < OPENSSL_VERSION_1_1_0
 
 // array larger than anything that OpenSSL may need:
 static TURN_MUTEX_DECLARE(mutex_buf[256]);
